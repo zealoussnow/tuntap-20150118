@@ -519,7 +519,7 @@ tap_interface::generate_link_event(u_int32_t code)
 	event.header.event_code = code;
 	event.header.event_data[0] = family;
 	event.unit = (u_int32_t) unit;
-	strncpy(event.if_name, ifnet_name(ifp), IFNAMSIZ);
+	memcpy(event.if_name, ifnet_name(ifp), IFNAMSIZ);
 
 	ifnet_event(ifp, &event.header);
 }
