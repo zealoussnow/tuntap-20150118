@@ -3,7 +3,7 @@
 <plist version="1.0">
 <dict>
     <key>Label</key>
-    <string>net.sf.tuntaposx.tun</string>
+    <string>net.tunnelblick.tap</string>
     <key>ProgramArguments</key>
     <array>
         <string>/sbin/kextload</string>
