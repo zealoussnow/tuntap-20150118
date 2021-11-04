@@ -22,11 +22,11 @@ BUNDLE_VERSION = $(TAP_KEXT_VERSION)
 INCLUDE = -I.. -I/System/Library/Frameworks/Kernel.framework/Headers -I/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/System/Library/Frameworks/Kernel.framework/Headers
 CFLAGS = -Wall -Werror -Wno-deprecated-declarations -mkernel -force_cpusubtype_ALL \
 	-nostdinc -fno-builtin -fno-stack-protector -msoft-float -fno-common \
-	-arch x86_64 \
+	$(TUNTAP_ARCH_ARGS) \
 	-DKERNEL -DAPPLE -DKERNEL_PRIVATE -DTUNTAP_VERSION=\"$(TUNTAP_VERSION)\" \
 	-DTAP_KEXT_VERSION=\"$(TAP_KEXT_VERSION)\"
 CCFLAGS = $(CFLAGS)
-LDFLAGS = -Wall -Werror -Wno-deprecated-declarations -arch x86_64 -Xlinker -kext -nostdlib -lkmodc++ -lkmod -lcc_kext
+LDFLAGS = -Wall -Werror -Wno-deprecated-declarations $(TUNTAP_ARCH_ARGS) -Xlinker -kext -nostdlib -lkmodc++ -lkmod -lcc_kext
 
 CCP = clang -x c++
 CC = clang -x c

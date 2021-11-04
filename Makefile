@@ -76,7 +76,7 @@ clean:
 	-rm -f tuntap_$(TUNTAP_VERSION)_src.tar.gz
 
 %.kext:
-	cd src/$* && make TUNTAP_VERSION=$(TUNTAP_VERSION) -f Makefile all
+	cd src/$* && make TUNTAP_VERSION=$(TUNTAP_VERSION) TUNTAP_ARCH_ARGS=$(TUNTAP_ARCH_ARGS) -f Makefile all
 	if test -s ".signing_identity"; then \
 		codesign -fv --keychain net.sf.tuntaposx.tmp -s "$$(cat .signing_identity)" \
 			$*.kext ; \
