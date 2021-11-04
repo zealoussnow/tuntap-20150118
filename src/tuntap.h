@@ -170,7 +170,7 @@ class tuntap_mbuf_queue {
 
 		/* enqueue an mbuf. returns true if there was space left, so the mbuf could be
 		 * queued, false otherwise */
-		bool enqueue(mbuf_t mb);
+		bool tt_enqueue(mbuf_t mb);
 
 		/* tries to dequeue the next mbuf. If the queue is empty, NULL is returned */
 		mbuf_t dequeue();

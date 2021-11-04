@@ -210,7 +210,7 @@ tuntap_mbuf_queue::~tuntap_mbuf_queue()
 }
 
 bool
-tuntap_mbuf_queue::enqueue(mbuf_t mb)
+tuntap_mbuf_queue::tt_enqueue(mbuf_t mb)
 {
 	if (size == QUEUE_SIZE)
 		return false;
@@ -800,7 +800,7 @@ tuntap_interface::if_output(mbuf_t m)
 
 		auto_lock l(&lock);
 
-		if (!send_queue.enqueue(pkt)) {
+		if (!send_queue.tt_enqueue(pkt)) {
 			mbuf_freem(pkt);
 			mbuf_freem_list(m);
 			return ENOBUFS;
